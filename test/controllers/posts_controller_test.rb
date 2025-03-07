@@ -19,7 +19,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to post_path(Post.last)
     assert_equal 'Тест', Post.last.title
-    assert_equal 'Тестовое тело', Post.last.body 
-    assert_equal @user.id, Post.last.creator_id 
+    assert_equal 'Тестовое тело', Post.last.body
+    assert_equal @user.id, Post.last.creator_id
   end
 end

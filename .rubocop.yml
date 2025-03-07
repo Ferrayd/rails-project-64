@@ -3,6 +3,7 @@ require:
 
 AllCops:
   TargetRailsVersion: 7.1
+  NewCops: enable
 
 Style/Documentation:
   Enabled: false
