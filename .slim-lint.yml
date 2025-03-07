@@ -1,0 +1,5 @@
+linters:
+  LineLength:
+    max: 120
+  Indentation:
+    enabled: true

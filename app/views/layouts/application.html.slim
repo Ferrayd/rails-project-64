@@ -1,0 +1,36 @@
+doctype html
+html.h-100
+  head
+    title = content_for(:title) || 'Коллективный блог'
+    meta[name='viewport' content='width=device-width,initial-scale=1']
+    meta[name='apple-mobile-web-app-capable' content='yes']
+    meta[name='mobile-web-app-capable' content='yes']
+
+    = csrf_meta_tags
+    = csp_meta_tag
+    = yield :head
+
+    link[rel='icon' href='/icon.png' type='image/png']
+    link[rel='icon' href='/icon.svg' type='image/svg+xml']
+    link[rel='apple-touch-icon' href='/icon.png']
+
+    = stylesheet_link_tag :application, 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
+    = Sentry.get_trace_propagation_meta.html_safe # rubocop:disable Rails/OutputSafety
+
+  body.d-flex.flex-column.h-100
+    header
+      = render 'layouts/shared/nav'
+
+    main.flex-shrink-0[style='padding-top: 60px;']
+      .container
+        .p-4.align-items-center.border.shadow.bg-white.rounded-3.mt-4
+          .mb-4
+            h1 = yield :title
+            = yield
+
+    footer.footer.mt-auto.py-3.bg-dark.text-light
+      .container-xl
+        .row
+          .col.text-center
+            span.text-muted = "© Hexlet ltd, #{Time.current.year}"

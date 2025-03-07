@@ -1,29 +1,41 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-ruby "3.3.5"
-gem "rails", "~> 7.1.3", ">= 7.1.3.4"
-gem "sprockets-rails"
-gem "puma", ">= 5.0"
-gem "jsbundling-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "cssbundling-rails"
-gem "jbuilder"
-gem "tzinfo-data", platforms: %i[ windows jruby ]
-gem "bootsnap", require: false
+source 'https://rubygems.org'
+
+ruby '3.3.5'
+gem 'ancestry', '~> 4.3'
+gem 'bootsnap', require: false
+gem 'cssbundling-rails'
+gem 'devise'
+gem 'jbuilder'
+gem 'jsbundling-rails'
+gem 'puma', '>= 5.0'
+gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
+gem 'sentry-rails'
+gem 'sentry-ruby'
+gem 'slim'
+gem 'sprockets-rails'
+gem 'stimulus-rails'
+gem 'turbo-rails'
+gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
+  gem 'debug', platforms: %i[mri windows]
+  gem 'faker'
+  gem 'minitest-power_assert'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'slim_lint'
   gem 'sqlite3'
-  gem "debug", platforms: %i[ mri windows ]
 end
 
 group :development do
-  gem "web-console"
+  gem 'web-console'
 end
 
 group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :production do

@@ -1,0 +1,10 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRailsVersion: 7.1
+
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Max: 30
