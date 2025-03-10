@@ -1,0 +1,30 @@
+---
+en:
+  posts:
+    comments:
+      create:
+        success: Comment was created.
+      edit:
+        title: Editing comment
+      update:
+        success: Comment was updated.
+    confirm: Are you shure?
+    create:
+      success: Post was created.
+    delete: Delete post
+    destroy:
+      success: Post was destroyed.
+    edit:
+      title: Editing post
+    index:
+      all: Posts
+      comments_count:
+        one: "%{count} comment"
+        other: "%{count} comments"
+        zero: No comments
+      new: New Post
+    show:
+      body: Body
+      comments: Comments
+    update:
+      success: Post was updated.

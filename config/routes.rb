@@ -2,12 +2,16 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :posts
-  root 'posts#index'
-  resources :posts do
-    resources :comments, only: [:create]
+  scope '(:locale)', locale: /en|ru/ do
+    root 'posts#index'
+    resources :posts do
+      scope module: :posts do
+        resources :comments, controller: 'comments' do
+          get :new, on: :collection
+        end
+        resources :likes, only: %i[create destroy], controller: :likes
+      end
+    end
   end
-  resources :posts do
-    resources :likes, only: %i[create destroy], controller: :likes
-  end
+
 end

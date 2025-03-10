@@ -1,50 +1,11 @@
-= content_for :title do
-  = @post.title
-
-.card
-  .card-body
-    h1 = @post.title
-    p.lead = @post.body
-
-    hr
-
-    p
-      strong Категория:
-      = @post.category.name
-
-    p
-      strong Автор:
-      = @post.creator.email
-
-    hr
-
-     h3 Комментарии
-    - @post.post_comments.arrange(order: :created_at).each do |comment, nested_comments|
-      .card.mb-2
-        .card-body
-          p = comment.content
-          small.text-muted = comment.user.email
-
-          = form_with(model: [@post, PostComment.new], local: true) do |f|
-            = f.hidden_field :parent_id, value: comment.id
-            .mb-2
-              = f.text_area :content, class: 'form-control', placeholder: 'Ответить на комментарий'
-            = f.submit 'Ответить', class: 'btn btn-primary btn-sm'
-
-          - nested_comments.each_key do |nested_comment|
-            .ms-4
-              .card.mb-2
-                .card-body
-                  p = nested_comment.content
-                  small.text-muted = nested_comment.user.email
-
-    h3 Добавить комментарий
-    = form_with(model: [@post, PostComment.new], local: true) do |f|
-      .mb-2
-        = f.text_area :content, class: 'form-control', placeholder: 'Оставьте комментарий'
-      = f.submit 'Комментировать', class: 'btn btn-primary'
-    hr
-
-    = link_to 'Edit', edit_post_path(@post), class: 'btn btn-warning me-2'
-    = link_to 'Back to Posts', posts_path, class: 'btn btn-secondary'
-    = link_to 'Destroy', @post, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger'
+.container.mt-5
+  / Пост
+  .card.mb-4
+    .card-body
+      h1.card-title = @post.title
+      p.card-text = @post.body
+      .mt-3
+        span.badge.bg-secondary = @post.category.name
+        .mt-2
+          small.text-muted
+            = "Опубликовано #{@post.creator.email} #{time_ago_in_words(@post.created_at)} назад"

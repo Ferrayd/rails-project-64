@@ -1,0 +1,6 @@
+= simple_form_for @post do |f|
+  = f.input :title, label: t('simple_form.placeholders.title')
+  = f.input :body, label: t('simple_form.placeholders.body')
+  = f.input :category_id, collection: Category.all,
+  label: t('simple_form.placeholders.category'), prompt: t('simple_form.select_category')
+  = f.submit t('simple_form.buttons.create'), class: 'btn btn-primary'

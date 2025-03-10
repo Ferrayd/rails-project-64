@@ -1,0 +1,17 @@
+---
+ru:
+  simple_form:
+    buttons:
+      create: Создать Пост
+    error_notification:
+      default_message: 'Пожалуйста, исправьте ошибки:'
+    'no': Нет
+    placeholders:
+      body: Введите текст
+      category: Категории
+      select_category: Выберите категорию
+      title: Название
+    required:
+      mark: "*"
+      text: обязательное
+    'yes': ДА

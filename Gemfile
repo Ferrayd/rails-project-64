@@ -18,6 +18,11 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'rails-i18n'
+gem 'i18n-debug'
+gem 'i18n-tasks'
+gem 'simple_form'
+gem 'ostruct'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]

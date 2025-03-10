@@ -1,0 +1,30 @@
+---
+ru:
+  posts:
+    actions:
+      back: Назад к постам
+      destroy: Удалить
+      edit: Редактировать
+    confirm: Da
+    index:
+      confirm_delete: Вы уверены, что хотите удалить этот пост?
+      no_posts: Пока нет ни одного поста
+      table_headers:
+        author: Автор
+        created_at: Дата создания
+        number: "#"
+        title: Заголовок
+      title: Список постов
+    show:
+      title: "Заголовок"
+      author: 'Автор:'
+      category: 'Категория:'
+      comments:
+        add_comment: Добавить комментарий
+        heading: Комментарии
+        new_placeholder: Оставьте комментарий
+        reply: Ответить
+        reply_placeholder: Ответить на комментарий
+        submit: Отправить
+      messages:
+        confirm_destroy: Вы уверены, что хотите удалить этот пост?

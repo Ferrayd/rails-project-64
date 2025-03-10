@@ -1,0 +1,19 @@
+---
+ru:
+  home: Домой
+  show: Показать
+  title: Коллективный блог
+  back: Назад
+  destroy: Удалить
+  destroy_confirmation: Вы уверены?
+  edit: Изменить
+  layouts:
+    application:
+      hexlet_title: "© Хекслет, %{year}"
+    shared:
+      nav:
+        auth:
+          enter: Войти
+          exit: Выйти
+          profile: Профиль
+          registration: Регистрация

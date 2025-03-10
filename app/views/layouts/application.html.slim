@@ -1,7 +1,7 @@
 doctype html
 html.h-100
   head
-    title = content_for(:title) || 'Коллективный блог'
+    title = t('title')
     meta[name='viewport' content='width=device-width,initial-scale=1']
     meta[name='apple-mobile-web-app-capable' content='yes']
     meta[name='mobile-web-app-capable' content='yes']
@@ -19,8 +19,9 @@ html.h-100
     = Sentry.get_trace_propagation_meta
 
   body.d-flex.flex-column.h-100
-    header
+    header 
       = render 'layouts/shared/nav'
+      = render 'layouts/shared/flash'
 
     main.flex-shrink-0[style='padding-top: 60px;']
       .container
@@ -33,4 +34,4 @@ html.h-100
       .container-xl
         .row
           .col.text-center
-            span = "© Hexlet ltd, #{Time.current.year}"
+            span = t('.hexlet_title', year: Time.current.year)

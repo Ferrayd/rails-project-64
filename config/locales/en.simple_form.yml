@@ -1,0 +1,17 @@
+---
+en:
+  simple_form:
+    buttons:
+      create: Create Post
+    error_notification:
+      default_message: 'Please check the problems:'
+    'no': 'No'
+    placeholders:
+      body: Enter text
+      post_comment:
+        body: Text
+      title: Enter post title
+    required:
+      mark: "*"
+      text: required
+    'yes': 'Yes'
