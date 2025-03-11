@@ -1,0 +1,11 @@
+.container.mt-5
+  / Пост
+  .card.mb-4
+    .card-body
+      h1.card-title = @post.title
+      p.card-text = @post.body
+      .mt-3
+        span.badge.bg-secondary = @post.category.name
+        .mt-2
+          small.text-muted
+            = "Опубликовано #{@post.creator.email} #{time_ago_in_words(@post.created_at)} назад"

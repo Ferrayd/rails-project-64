@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root 'posts#index'
     resources :posts do
       scope module: :posts do
-        resources :comments, controller: 'comments' do
+        resources :post_comments, controller: 'comments' do
           get :new, on: :collection
         end
         resources :likes, only: %i[create destroy], controller: :likes
