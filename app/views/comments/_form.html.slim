@@ -1,0 +1,10 @@
+= form_for PostComment.new, url: post_comments_path(post) do |f|
+  - if defined?(parent) && parent
+    = f.hidden_field :parent_id, value: parent.id
+    .mb-2
+      = f.text_area :content, class: 'form-control', placeholder: 'Ответить на комментарий'
+  - else
+    .mb-2
+      = f.text_area :content, class: 'form-control', placeholder: 'Оставьте комментарий'
+  = f.submit (defined?(parent) && parent ? 'Ответить' : 'Комментировать'), class: 'btn btn-primary btn-sm'
+  hr

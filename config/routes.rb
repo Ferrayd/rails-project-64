@@ -5,13 +5,8 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /en|ru/ do
     root 'posts#index'
     resources :posts do
-      scope module: :posts do
-        resources :post_comments, controller: 'comments' do
-          get :new, on: :collection
-        end
-        resources :likes, only: %i[create destroy], controller: :likes
-      end
+      resources :comments, only: :create
+      resources :likes, only: %i[create destroy]
     end
   end
-
 end

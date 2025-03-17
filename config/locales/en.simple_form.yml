@@ -8,10 +8,13 @@ en:
     'no': 'No'
     placeholders:
       body: Enter text
+      category: Categories
       post_comment:
         body: Text
+      select_category: Select category
       title: Enter post title
     required:
       mark: "*"
       text: required
+    select_category: Select category
     'yes': 'Yes'

@@ -9,3 +9,13 @@ Style/Documentation:
   Enabled: false
 Metrics/BlockLength:
   Max: 30
+
+Layout/LineLength:
+  Exclude:
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/development.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'

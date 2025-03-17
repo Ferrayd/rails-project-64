@@ -1,27 +1,59 @@
 # frozen_string_literal: true
 
+# class CommentsController < ApplicationController
+#   before_action :authenticate_user!
+
+#   def create
+#     @post = Post.find(params[:post_id])
+#     @comment = @post.post_comments.build(comment_params)
+#     @comment.user = current_user
+#     if params[:post_comment][:parent_id].present?
+#       parent = PostComment.find(params[:post_comment][:parent_id])
+#       @comment.parent = parent
+#     end
+#     if @comment.save
+#       redirect_to @post, notice: t('.success')
+#     else
+#       redirect_to @post, alert: t('.failure')
+#     end
+#   end
+
+#   private
+
+#   def comment_params
+#     params.require(:post_comment).permit(:content)
+#   end
+# end
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post
-
   def create
-    @comment = @post.post_comments.build(comment_params)
-    @comment.user = current_user
+    @post = Post.find(params[:post_id])
+    @comment = build_comment(@post)
 
     if @comment.save
-      redirect_to posts_url, notice: t('success')
+      redirect_to @post, notice: t('.success')
     else
-      redirect_to posts_url, alert: t('error')
+      redirect_to @post, alert: t('.failure')
     end
   end
 
   private
 
-  def set_post
-    @post = Post.find(params[:post_id])
+  def build_comment(post)
+    comment = post.post_comments.build(comment_params)
+    comment.user = current_user
+    assign_parent_comment(comment)
+    comment
+  end
+
+  def assign_parent_comment(comment)
+    return if params[:post_comment][:parent_id].blank?
+
+    parent = PostComment.find(params[:post_comment][:parent_id])
+    comment.parent = parent
   end
 
   def comment_params
-    params.require(:post_comment).permit(:content, :parent_id)
+    params.require(:post_comment).permit(:body, :parent_id)
   end
 end

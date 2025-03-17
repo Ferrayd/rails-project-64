@@ -1,30 +1,29 @@
 ---
 en:
   posts:
-    comments:
-      create:
-        success: Comment was created.
-      edit:
-        title: Editing comment
-      update:
-        success: Comment was updated.
-    confirm: Are you shure?
-    create:
-      success: Post was created.
-    delete: Delete post
-    destroy:
-      success: Post was destroyed.
     edit:
-      title: Editing post
+      back: Back
+      show: Show
     index:
-      all: Posts
-      comments_count:
-        one: "%{count} comment"
-        other: "%{count} comments"
-        zero: No comments
-      new: New Post
+      actions:
+        new_post: New post
+      confirm: Are you sure?
+      destroy: Delete
+      edit: Edit
+      show: Show
+      table_headers:
+        author: Author
+        number: "№"
+        title: Title
+      title: Posts list
+    new:
+      title: New post
     show:
-      body: Body
+      add_comment: Add comment
+      author: 'Author:'
+      back_to_posts: Back to posts
+      category: 'Category:'
       comments: Comments
-    update:
-      success: Post was updated.
+      confirm_delete: Are you sure?
+      destroy: Delete
+      edit: Edit

@@ -1,12 +1,10 @@
 ---
 ru:
-  home: Домой
-  show: Показать
-  title: Коллективный блог
   back: Назад
   destroy: Удалить
   destroy_confirmation: Вы уверены?
   edit: Изменить
+  home: Домой
   layouts:
     application:
       hexlet_title: "© Хекслет, %{year}"
@@ -17,3 +15,10 @@ ru:
           exit: Выйти
           profile: Профиль
           registration: Регистрация
+  likes:
+    create:
+      success: Вы поставили лайк!
+    destroy:
+      success: Вы убрали лайк.
+  show: Показать
+  title: Коллективный блог

@@ -1,16 +1,24 @@
-ru:
-  simple_form:
-    buttons:
-      create: "Create Post"
-    'yes': 'yes'
-    'no': 'no'
-    required:
-      text: 'required'
-      mark: '*'
-    error_notification:
-      default_message: 'Please, fix the errors'
-    placeholders:
-      title: "Title"
-      body: "Enter the text"
-      category: "Category"
-      select_category: "Select category"
+---
+en:
+  back: Back
+  destroy: Destroy
+  destroy_confirmation: Are you sure?
+  edit: Edit
+  home: Home
+  layouts:
+    application:
+      hexlet_title: "© Hexlet, %{year}"
+    shared:
+      nav:
+        auth:
+          enter: Sign in
+          exit: Sign out
+          profile: Profile
+          registration: Sign up
+  likes:
+    create:
+      success: You liked the post!
+    destroy:
+      success: You unliked the post.
+  show: Show
+  title: Collective blog

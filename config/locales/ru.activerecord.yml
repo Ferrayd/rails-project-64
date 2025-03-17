@@ -2,24 +2,76 @@
 ru:
   activerecord:
     attributes:
-      comment:
-        body: Содержание
+      category:
+        name: Название
       post:
-        body: Текст
-        title: Название
+        body: Содержание
+        category: Категория
+        creator: Автор
+        title: Заголовок
+      post_comment:
+        content: Содержание
+        post: Пост
+        user: Пользователь
+      post_like:
+        post: Пост
+        user: Пользователь
+      user:
+        email: Электронная почта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
     errors:
       models:
-        comment:
+        category:
           attributes:
-            body:
+            name:
               blank: не может быть пустым
+              taken: уже существует
         post:
           attributes:
             body:
               blank: не может быть пустым
             title:
-              blank: должно быть заполнено
+              blank: не может быть пустым
+        post_comment:
+          attributes:
+            content:
+              blank: не может быть пустым
+        post_like:
+          attributes:
+            user_id:
+              taken: уже поставил лайк
     models:
-      category: Категория
-      comment: Комментарий
-      post: Пост
+      category:
+        few: Категории
+        many: Категорий
+        one: Категория
+        other: Категории
+      post:
+        few: Поста
+        many: Постов
+        one: Пост
+        other: Посты
+      post_comment:
+        few: Комментария
+        many: Комментариев
+        one: Комментарий
+        other: Комментарии
+      post_like:
+        few: Лайка
+        many: Лайков
+        one: Лайк
+        other: Лайки
+      user:
+        few: Пользователя
+        many: Пользователей
+        one: Пользователь
+        other: Пользователи
+  posts:
+    create:
+      success: Пост успешно создан.
+    destroy:
+      success: Пост удалён
+    update:
+      failure: 'Ошибка обновления: %{errors}'
+      success: Пост успешно обновлен.

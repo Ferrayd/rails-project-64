@@ -2,23 +2,71 @@
 en:
   activerecord:
     attributes:
-      comment:
-        body: Content
+      category:
+        name: Name
+      likes:
+        create:
+          success: You liked the post!
+        destroy:
+          success: You unliked the post.
       post:
         body: Body
+        category: Category
+        creator: Creator
         title: Title
+      post_comment:
+        content: Content
+        post: Post
+        user: User
+      post_like:
+        post: Post
+        user: User
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
     errors:
       models:
-        comment:
+        category:
           attributes:
-            body:
-              blank: Body can't be blank
+            name:
+              blank: can't be blank
+              taken: already exists
         post:
           attributes:
             body:
-              blank: Body can't be blank
+              blank: can't be blank
             title:
-              blank: should be filled
+              blank: can't be blank
+        post_comment:
+          attributes:
+            content:
+              blank: can't be blank
+        post_like:
+          attributes:
+            user_id:
+              taken: already liked
     models:
-      comment: Comment
-      post: Post
+      category:
+        one: Category
+        other: Categories
+      post:
+        one: Post
+        other: Posts
+      post_comment:
+        one: Comment
+        other: Comments
+      post_like:
+        one: Like
+        other: Likes
+      user:
+        one: User
+        other: Users
+  posts:
+    create:
+      success: Post successfully created.
+    destroy:
+      success: Post deleted
+    update:
+      failure: 'Update error: %{errors}'
+      success: Post successfully updated

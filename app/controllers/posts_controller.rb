@@ -14,29 +14,29 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
 
+  def edit; end
+
   def create
     @post = current_user.posts.build(post_params.merge(creator: current_user))
     if @post.save
-      redirect_to posts_url, notice: 'Пост успешно создан.'
+      redirect_to posts_url, notice: t('.success')
     else
       render :new
     end
-  end
-  
-  def edit; end
-
-  def destroy
-    @post.destroy
-    redirect_to posts_path, notice: "Пост удалён"
   end
 
   def update
     if @post.update(post_params)
       redirect_to posts_path
     else
-      alert "Ошибка обновления: #{@post.errors.full_messages}"
+      flash.alert = t('.failure', errors: @post.errors.full_messages.join(', '))
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to posts_path, notice: t('.success')
   end
 
   private
