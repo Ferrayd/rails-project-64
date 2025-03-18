@@ -8,10 +8,3 @@
     - comment.children.each do |nested_comment|
       .ms-4.mt-2
         = render partial: 'comments/comment', locals: { comment: nested_comment, post: post }
-
-        / - nested_comments.each_key do |nested_comment|
-        /   .ms-4
-        /     .card.mb-2
-        /       .card-body
-        /         p = nested_comment.content
-        /         small.text-muted = nested_comment.user.email

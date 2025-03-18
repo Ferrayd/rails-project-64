@@ -1,16 +1,2 @@
-/ - post.post_comments.arrange(order: :created_at).each do |comment, nested_comments|
-/   .card.mb-2
-/     .card-body
-/       p = comment.content
-/       small.text-muted = comment.user.email
-
-/       = render partial: 'comments/form',
-/               locals: {post: post, parent: comment}
-
-/       - nested_comments.each do |nested_comment, sub_comments|
-/         .ms-4.mt-2
-/           = render partial: 'comments/comment',
-/                   locals: {comment: nested_comment, nested_comments: sub_comments, post: post}
-
 - post.post_comments.roots.each do |comment|
   = render partial: 'comments/comment', locals: { comment: comment, post: post }
