@@ -10,12 +10,15 @@ ru:
       confirm: Вы уверены?
       destroy: Удалить
       edit: Редактировать
+      like: Лайкнуть
       show: Показать
       table_headers:
         author: Автор
+        likes: Лайки
         number: "№"
         title: Заголовок
       title: Список постов
+      unlike: Убрать лайк
     new:
       title: Новый пост
     show:
@@ -27,3 +30,4 @@ ru:
       confirm_delete: Вы уверены?
       destroy: Удалить
       edit: Редактировать
+      title: Заголовок

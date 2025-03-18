@@ -10,12 +10,15 @@ en:
       confirm: Are you sure?
       destroy: Delete
       edit: Edit
+      like: like
       show: Show
       table_headers:
         author: Author
+        likes: Likes
         number: "№"
         title: Title
       title: Posts list
+      unlike: unlike
     new:
       title: New post
     show:
@@ -27,3 +30,4 @@ en:
       confirm_delete: Are you sure?
       destroy: Delete
       edit: Edit
+      title: Title

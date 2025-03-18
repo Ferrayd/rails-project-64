@@ -1,5 +1,5 @@
 = content_for :title do
-  = @post.title
+  = t('posts.show.title')
 
 .card
   .card-body
@@ -15,6 +15,11 @@
     p
       strong = t('posts.show.author')
       = @post.creator.email
+
+    hr
+
+    p
+    == render partial: 'likes/like', locals: { post: @post }
 
     hr
 
