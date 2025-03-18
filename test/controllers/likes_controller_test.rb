@@ -8,21 +8,27 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @post = posts(:one)
     sign_in @user
-    PostLike.delete_all
+
+    @post.post_likes.where(user: @user).destroy_all
   end
 
-  test 'должен ставить лайк' do
-    assert_difference('PostLike.count', 1) do
-      post post_likes_url(@post)
+  test 'should create like' do
+    assert_difference('@post.post_likes.count', 1) do
+      post post_likes_path(@post, locale: I18n.default_locale)
     end
-    assert_redirected_to post_path(@post)
+
+    assert_redirected_to posts_url
+    assert_equal I18n.t('likes.create.success'), flash[:notice]
   end
 
-  test 'должен убирать лайк' do
+  test 'should destroy like' do
     like = @post.post_likes.create!(user: @user)
-    assert_difference('PostLike.count', -1) do
-      delete post_like_url(post_id: @post.id, id: like.id)
+
+    assert_difference('@post.post_likes.count', -1) do
+      delete post_like_path(@post, like, locale: I18n.default_locale)
     end
-    assert_redirected_to post_path(@post)
+
+    assert_redirected_to posts_url
+    assert_equal I18n.t('likes.destroy.success'), flash[:notice]
   end
 end

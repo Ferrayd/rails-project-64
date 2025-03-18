@@ -17,11 +17,12 @@ class PostsController < ApplicationController
   def edit; end
 
   def create
-    @post = current_user.posts.build(post_params.merge(creator: current_user))
+    @post = build_post
+
     if @post.save
       redirect_to posts_url, notice: t('.success')
     else
-      render :new
+      handle_create_failure
     end
   end
 
@@ -47,5 +48,14 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :category_id)
+  end
+
+  def build_post
+    current_user.posts.build(post_params.merge(creator: current_user))
+  end
+
+  def handle_create_failure
+    flash.alert = t('.failure', errors: @post.errors.full_messages.join(', '))
+    render :new, status: :unprocessable_entity
   end
 end

@@ -16,6 +16,9 @@ en:
         title: Title
       post_comment:
         content: Content
+        create:
+          failure: failure
+          success: create
         post: Post
         user: User
       post_like:
@@ -62,11 +65,17 @@ en:
       user:
         one: User
         other: Users
+  comments:
+    create:
+      failure: crate failure.
+      success: crate successfull.
   posts:
     create:
       success: Post successfully created.
     destroy:
       success: Post deleted
+    handle_create_failure:
+      failure: 'Create error: %{errors}'
     update:
       failure: 'Update error: %{errors}'
       success: Post successfully updated
