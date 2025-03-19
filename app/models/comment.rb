@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PostComment < ApplicationRecord
+class Comment < ApplicationRecord
   has_ancestry orphan_strategy: :destroy
 
   belongs_to :post

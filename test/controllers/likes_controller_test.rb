@@ -9,11 +9,11 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:one)
     sign_in @user
 
-    @post.post_likes.where(user: @user).destroy_all
+    @post.likes.where(user: @user).destroy_all
   end
 
   test 'should create like' do
-    assert_difference('@post.post_likes.count', 1) do
+    assert_difference('@post.likes.count', 1) do
       post post_likes_path(@post, locale: I18n.default_locale)
     end
 
@@ -22,9 +22,9 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy like' do
-    like = @post.post_likes.create!(user: @user)
+    like = @post.likes.create!(user: @user)
 
-    assert_difference('@post.post_likes.count', -1) do
+    assert_difference('@post.likes.count', -1) do
       delete post_like_path(@post, like, locale: I18n.default_locale)
     end
 

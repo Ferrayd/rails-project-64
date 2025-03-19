@@ -19,3 +19,8 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/development.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
+    - 'db/migrate/20250319121755_rename_post_likes_and_comments_tables.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20250319121755_rename_post_likes_and_comments_tables.rb'

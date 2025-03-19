@@ -16,7 +16,7 @@ table.table.table-striped.table-hover.mb-5
         th{scope='row'} = i + 1
         td = post.title
         td = post.creator.email
-        td = post.post_likes.count
+        td = post.likes.count
         td.d-flex
           .me-4 = link_to t('posts.index.show'), post_path(post)
           .me-4 = link_to t('posts.index.edit'), edit_post_path(post)

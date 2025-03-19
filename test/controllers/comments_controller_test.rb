@@ -11,8 +11,8 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create comment' do
-    assert_difference('@post.post_comments.count', 1) do
-      post post_comments_path(@post, locale: I18n.default_locale), params: { post_comment: { content: 'Test comment' } }
+    assert_difference('@post.comments.count', 1) do
+      post post_comments_path(@post, locale: I18n.default_locale), params: { comment: { content: 'Test comment' } }
     end
 
     assert_redirected_to @post
@@ -20,8 +20,8 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not create comment with empty body' do
-    assert_no_difference('@post.post_comments.count') do
-      post post_comments_path(@post, locale: I18n.default_locale), params: { post_comment: { content: '' } }
+    assert_no_difference('@post.comments.count') do
+      post post_comments_path(@post, locale: I18n.default_locale), params: { comment: { content: '' } }
     end
 
     assert_redirected_to @post
@@ -29,11 +29,11 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create nested comment' do
-    parent_comment = post_comments(:one)
+    parent_comment = comments(:one)
 
-    assert_difference('@post.post_comments.count', 1) do
+    assert_difference('@post.comments.count', 1) do
       post post_comments_path(@post, locale: I18n.default_locale),
-           params: { post_comment: { content: 'Nested comment', parent_id: parent_comment.id } }
+           params: { comment: { content: 'Nested comment', parent_id: parent_comment.id } }
     end
 
     assert_redirected_to @post
