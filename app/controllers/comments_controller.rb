@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @post, notice: t('.success')
     else
-      redirect_to @post, alert: t('.failure')
+      render 'posts/show', status: :unprocessable_entity
     end
   end
 
@@ -23,13 +23,13 @@ class CommentsController < ApplicationController
   end
 
   def assign_parent_comment(comment)
-    return if params[:comment][:parent_id].blank?
+    return if params[:post_comment][:parent_id].blank?
 
-    parent = Comment.find(params[:comment][:parent_id])
+    parent = PostComment.find(params[:post_comment][:parent_id])
     comment.parent = parent
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :parent_id)
+    params.require(:post_comment).permit(:content, :parent_id)
   end
 end
