@@ -12,6 +12,9 @@ en:
       post:
         body: Body
         category: Category
+        create:
+          failure: failure
+          success: create
         creator: Creator
         title: Title
       post_comment:
@@ -67,15 +70,15 @@ en:
         other: Users
   comments:
     create:
-      failure: crate failure.
-      success: crate successfull.
+      success: create successfull.
+    handle_create_failure:
+      failure: 'Create error: %{errors}'
   posts:
     create:
-      success: Post successfully created.
+      success: Post created successfully.
     destroy:
-      success: Post deleted
+      success: Post deleted.
     handle_create_failure:
       failure: 'Create error: %{errors}'
     update:
       failure: 'Update error: %{errors}'
-      success: Post successfully updated

@@ -1,9 +1,8 @@
 ---
 en:
-  back: Back
-  destroy: Destroy
-  destroy_confirmation: Are you sure?
-  edit: Edit
+  errors:
+    messages:
+      not_saved: The resource could not be saved.
   home: Home
   layouts:
     application:
@@ -20,5 +19,5 @@ en:
       success: You liked the post!
     destroy:
       success: You unliked the post.
-  show: Show
+  new_post: New post
   title: Collective blog

@@ -2,7 +2,7 @@
 en:
   simple_form:
     buttons:
-      create: Create Post
+      save: Save Post
     error_notification:
       default_message: 'Please check the problems:'
     'no': 'No'

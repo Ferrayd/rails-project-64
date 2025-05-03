@@ -1,9 +1,13 @@
 div
   span.me-2
     = post.likes.count
+
   span
     - if post.likes.exists?(user: current_user)
-      = link_to '', post_likes_path(post, post.likes.find_by(user: current_user)),
-      class: 'bi bi-hand-thumbs-up-fill', data: { turbo_method: :delete }
+      = form_with url: post_like_path(post, post.likes.find_by(user: current_user)), method: :delete, local: true do
+        = button_tag '', type: 'submit',
+        class: 'bi bi-hand-thumbs-up-fill border-0 bg-transparent', title: t('posts.index.like')
     - else
-      = link_to '', post_likes_path(post), class: 'bi bi-hand-thumbs-up', data: { turbo_method: :post }
+      = form_with url: post_likes_path(post), method: :post, local: true do
+        = button_tag '', type: 'submit', class: 'bi bi-hand-thumbs-up border-0 bg-transparent',
+        title: t('posts.index.unlike')

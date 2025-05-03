@@ -6,17 +6,13 @@ class LikesController < ApplicationController
 
   def create
     @post.likes.find_or_create_by(user: current_user)
-    redirect_to posts_url, notice: t('.success')
+    redirect_back fallback_location: posts_url, notice: t('.success')
   end
 
   def destroy
-    like = PostLike.find(params[:id])
-    if like.user == current_user
-      like.destroy!
-      redirect_to posts_url, notice: t('.success')
-    else
-      redirect_to posts_url, alert: t('.failure')
-    end
+    @post_like = PostLike.find_by(user: current_user, post_id: params[:post_id])
+    @post_like&.destroy
+    redirect_back fallback_location: posts_url, notice: t('.success')
   end
 
   private

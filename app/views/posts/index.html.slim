@@ -7,23 +7,18 @@ table.table.table-striped.table-hover.mb-5
       th[scope='col'] = t('posts.index.table_headers.number')
       th[scope='col'] = t('posts.index.table_headers.title')
       th[scope='col'] = t('posts.index.table_headers.author')
-      th[scope='col'] = t('posts.index.table_headers.likes')
+      th[scope='col'] = t('posts.index.table_headers.comments')
+      th[scope='col'] = t('posts.index.table_headers.time')
       th
 
   tbody
     - @posts.each_with_index do |post, i|
       tr
         th{scope='row'} = i + 1
-        td = post.title
+        td = link_to post.title, post_path(post), class: 'text-decoration-none d-block w-100 text-dark'
         td = post.creator.email
-        td = post.likes.count
+        td = post.comments.count
+        td = post.created_at
         td.d-flex
           .me-4 = link_to t('posts.index.show'), post_path(post)
-          .me-4 = link_to t('posts.index.edit'), edit_post_path(post)
-          = link_to t('posts.index.destroy'), post_path(id: post.id),
-          data: { turbo_method: :delete, turbo_confirm: t('posts.index.confirm') },
-          class: 'btn btn-danger'
         td
-          == render partial: 'likes/like', locals: { post: }
-
-= link_to t('posts.index.actions.new_post'), new_post_path, class: 'btn btn-primary'

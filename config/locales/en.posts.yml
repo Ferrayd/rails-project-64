@@ -5,17 +5,13 @@ en:
       back: Back
       show: Show
     index:
-      actions:
-        new_post: New post
-      confirm: Are you sure?
-      destroy: Delete
-      edit: Edit
       like: like
       show: Show
       table_headers:
         author: Author
-        likes: Likes
+        comments: Сomments
         number: "№"
+        time: Created at
         title: Title
       title: Posts list
       unlike: unlike

@@ -2,7 +2,7 @@
 ru:
   simple_form:
     buttons:
-      create: Создать Пост
+      save: Сохранить Пост
     error_notification:
       default_message: 'Пожалуйста, исправьте ошибки:'
     'no': Нет

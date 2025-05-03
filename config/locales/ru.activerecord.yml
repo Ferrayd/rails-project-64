@@ -12,6 +12,9 @@ ru:
       post:
         body: Содержание
         category: Категория
+        create:
+          failure: не создан
+          success: создан
         creator: Автор
         title: Заголовок
       post_comment:
@@ -77,8 +80,9 @@ ru:
         other: Пользователи
   comments:
     create:
-      failure: Не удалось создать комментарий.
       success: Комментарий успешно создан.
+    handle_create_failure:
+      failure: 'Не удалось создать комментарий: %{errors}'
   posts:
     create:
       success: Пост успешно создан.
@@ -88,4 +92,3 @@ ru:
       failure: 'Не удалось создать пост: %{errors}'
     update:
       failure: 'Ошибка обновления: %{errors}'
-      success: Пост успешно обновлен.

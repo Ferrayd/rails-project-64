@@ -5,11 +5,12 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = build_comment(@post)
+    @comment.user = current_user
 
     if @comment.save
       redirect_to @post, notice: t('.success')
     else
-      render 'posts/show', status: :unprocessable_entity
+      handle_create_failure
     end
   end
 
@@ -31,5 +32,10 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:post_comment).permit(:content, :parent_id)
+  end
+
+  def handle_create_failure
+    flash.alert = t('.failure', errors: @post.errors.full_messages.join(', '))
+    render 'posts/show', status: :unprocessable_entity
   end
 end

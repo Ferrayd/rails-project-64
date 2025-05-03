@@ -1,9 +1,8 @@
 ---
 ru:
-  back: Назад
-  destroy: Удалить
-  destroy_confirmation: Вы уверены?
-  edit: Изменить
+  errors:
+    messages:
+      not_saved: Неполучается сохранить данные.
   home: Домой
   layouts:
     application:
@@ -20,5 +19,5 @@ ru:
       success: Вы поставили лайк!
     destroy:
       success: Вы убрали лайк.
-  show: Показать
+  new_post: Новый пост
   title: Коллективный блог

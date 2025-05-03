@@ -15,12 +15,7 @@
     p
       strong = t('posts.show.author')
       = @post.creator.email
-
-    hr
-
-    p
-    == render partial: 'likes/like', locals: { post: @post }
-
+      == render partial: 'likes/like', locals: { post: @post }
     hr
 
     h3 = t('posts.show.comments')

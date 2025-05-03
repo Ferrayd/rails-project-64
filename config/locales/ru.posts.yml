@@ -5,17 +5,13 @@ ru:
       back: Назад
       show: Показать
     index:
-      actions:
-        new_post: Новый пост
-      confirm: Вы уверены?
-      destroy: Удалить
-      edit: Редактировать
       like: Лайкнуть
       show: Показать
       table_headers:
         author: Автор
-        likes: Лайки
+        comments: Комментарии
         number: "№"
+        time: Время создания
         title: Заголовок
       title: Список постов
       unlike: Убрать лайк
