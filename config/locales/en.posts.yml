@@ -27,3 +27,5 @@ en:
       destroy: Delete
       edit: Edit
       title: Title
+    create:
+      failure: Error!

@@ -27,3 +27,5 @@ ru:
       destroy: Удалить
       edit: Редактировать
       title: Заголовок
+    create:
+      failure: Ошибка!
