@@ -1,6 +1,8 @@
 ---
 ru:
   posts:
+    create:
+      failure: Ошибка!
     edit:
       back: Назад
       show: Показать
@@ -10,6 +12,7 @@ ru:
       table_headers:
         author: Автор
         comments: Комментарии
+        likes: Количество лайков
         number: "№"
         time: Время создания
         title: Заголовок
@@ -27,5 +30,3 @@ ru:
       destroy: Удалить
       edit: Редактировать
       title: Заголовок
-    create:
-      failure: Ошибка!

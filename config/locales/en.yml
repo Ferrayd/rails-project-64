@@ -1,5 +1,9 @@
 ---
 en:
+  ago: ago
+  comments:
+    create:
+      failure: Comment can't be blank!
   errors:
     messages:
       not_saved: The resource could not be saved.

@@ -1,5 +1,9 @@
 ---
 ru:
+  ago: назад
+  comments:
+    create:
+      failure: Комментарий не может быть пустым!
   errors:
     messages:
       not_saved: Неполучается сохранить данные.

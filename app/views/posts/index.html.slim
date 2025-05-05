@@ -9,6 +9,7 @@ table.table.table-striped.table-hover.mb-5
       th[scope='col'] = t('posts.index.table_headers.author')
       th[scope='col'] = t('posts.index.table_headers.comments')
       th[scope='col'] = t('posts.index.table_headers.time')
+      th[scope='col'] = t('posts.index.table_headers.likes')
       th
 
   tbody
@@ -18,7 +19,8 @@ table.table.table-striped.table-hover.mb-5
         td = link_to post.title, post_path(post), class: 'text-decoration-none d-block w-100 text-dark'
         td = post.creator.email
         td = post.comments.count
-        td = post.created_at
+        td = "#{time_ago_in_words(post.created_at)} #{t('ago')}"
+        td = post.likes.count
         td.d-flex
           .me-4 = link_to t('posts.index.show'), post_path(post)
         td

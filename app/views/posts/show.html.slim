@@ -20,10 +20,8 @@
 
     h3 = t('posts.show.comments')
     = render partial: 'comments/list', locals: { post: @post }
-    h3 = t('posts.show.add_comment')
-    = render partial: 'comments/form', locals: { post: @post }
+    - if user_signed_in?
+      h3 = t('posts.show.add_comment')
+      = render partial: 'comments/form', locals: { post: @post }
 
-    = link_to t('posts.show.edit'), edit_post_path(@post), class: 'btn btn-warning me-2'
     = link_to t('posts.show.back_to_posts'), posts_path, class: 'btn btn-secondary'
-    = link_to t('posts.show.destroy'), @post,
-    data: { turbo_method: :delete, turbo_confirm: t('posts.show.confirm_delete') }, class: 'btn btn-danger'

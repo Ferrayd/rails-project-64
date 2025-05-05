@@ -19,6 +19,8 @@ h2 Sign up
       input_html: { autocomplete: 'new-password' }
 
   .form-actions
-    = f.button :submit, 'Sign up'
+      = f.submit 'Sign up',
+             class: 'btn btn-primary w-100',
+             data: { disable_with: 'Processing...' }
 
 = render 'devise/shared/links'

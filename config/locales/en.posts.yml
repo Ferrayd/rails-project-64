@@ -1,6 +1,8 @@
 ---
 en:
   posts:
+    create:
+      failure: Error!
     edit:
       back: Back
       show: Show
@@ -10,6 +12,7 @@ en:
       table_headers:
         author: Author
         comments: Сomments
+        likes: Likes
         number: "№"
         time: Created at
         title: Title
@@ -27,5 +30,3 @@ en:
       destroy: Delete
       edit: Edit
       title: Title
-    create:
-      failure: Error!

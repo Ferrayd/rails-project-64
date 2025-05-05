@@ -2,8 +2,8 @@
   .card-body
     p = comment.content
     small.text-muted = comment.user.email
-
-    = render partial: 'comments/form', locals: { post: post, parent: comment }
+    - if user_signed_in?
+      = render partial: 'comments/form', locals: { post: post, parent: comment }
 
     - comment.children.each do |nested_comment|
       .ms-4.mt-2

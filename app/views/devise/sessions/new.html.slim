@@ -9,6 +9,8 @@
               required: false,
               input_html: { autocomplete: 'current-password' }
   = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  = f.submit 'Sign up'
+  = f.submit 'Sign up',
+         class: 'btn btn-primary w-100',
+         data: { disable_with: 'Processing...' }
 
 = render 'devise/shared/links'
