@@ -5,13 +5,17 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = build_comment(@post)
-    @comment.user = current_user
 
     if @comment.save
       redirect_to @post, notice: t('.success')
     else
       handle_create_failure
     end
+  end
+
+  def show
+    @post = Post.includes(comments: :user).find(params[:id])
+    @comments_tree = @post.comments.arrange(order: :created_at)
   end
 
   private
@@ -24,9 +28,9 @@ class CommentsController < ApplicationController
   end
 
   def assign_parent_comment(comment)
-    return if params[:post_comment][:parent_id].blank?
+    return if params[:post_comment].blank?
 
-    parent = PostComment.find(params[:post_comment][:parent_id])
+    parent = PostComment.find(params[:post_comment])
     comment.parent = parent
   end
 

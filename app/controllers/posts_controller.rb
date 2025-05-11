@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_post, only: %i[show destroy edit update]
+  before_action :set_post, only: %i[show]
 
   def index
     @posts = Post.includes(:category, :creator).order(created_at: :desc)
@@ -14,8 +14,6 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
 
-  def edit; end
-
   def create
     @post = build_post
 
@@ -24,20 +22,6 @@ class PostsController < ApplicationController
     else
       handle_create_failure
     end
-  end
-
-  def update
-    if @post.update(post_params)
-      redirect_to posts_path
-    else
-      flash.alert = t('.failure', errors: @post.errors.full_messages.join(', '))
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @post.destroy
-    redirect_to posts_path, notice: t('.success')
   end
 
   private
