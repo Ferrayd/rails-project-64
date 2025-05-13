@@ -2,7 +2,7 @@
 en:
   posts:
     create:
-      failure: Error!
+      failure: "%{errors}"
     edit:
       back: Back
       show: Show

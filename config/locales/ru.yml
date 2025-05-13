@@ -4,6 +4,12 @@ ru:
   comments:
     create:
       failure: Комментарий не может быть пустым!
+    form:
+      reply_placeholder: "Ответить на комментарий"
+      comment_placeholder: "Оставьте комментарий"
+      reply_button: "Ответить"
+      comment_button: "Комментировать"
+    created: "Комментарий добавлен"
   errors:
     messages:
       not_saved: Неполучается сохранить данные.

@@ -7,36 +7,35 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = users(:one)
-    @post = posts(:one)
+    @post_for_create = posts(:two)
+    @post_for_destroy = posts(:one)
     sign_in @user
 
-    # Очищаем лайки текущего пользователя для тестового поста
-    @post.likes.where(user: @user).destroy_all
+    @post_for_create.likes.where(user: @user).destroy_all
+    @post_for_destroy.likes.where(user: @user).destroy_all
   end
 
   test 'should create like' do
-    assert_difference('@post.likes.count', 1) do
-      post post_likes_path(@post, locale: I18n.default_locale)
+    assert_difference('@post_for_create.likes.count', 1) do
+      post post_likes_path(@post_for_create, locale: I18n.default_locale)
     end
 
-    # Проверяем создание конкретной сущности
-    created_like = @post.likes.find_by(user_id: @user.id)
-    assert created_like, 'Лайк не был создан для текущего пользователя и поста'
-    
+    created_like = @post_for_create.likes.find_by(user_id: @user.id)
+    assert created_like, 'Like was not created for the current user and post'
+
     assert_redirected_to posts_url
     assert_equal I18n.t('likes.create.success'), flash[:notice]
   end
 
   test 'should destroy like' do
-    like = @post.likes.create!(user: @user)
-    
-    assert_difference('@post.likes.count', -1) do
-      delete post_like_path(@post, like, locale: I18n.default_locale)
+    like = @post_for_destroy.likes.find_or_create_by(user: @user)
+
+    assert_difference('@post_for_destroy.likes.count', -1) do
+      delete post_like_path(@post_for_destroy, like, locale: I18n.default_locale)
     end
 
-    # Проверяем что конкретный лайк был удален
-    assert_nil Like.find_by(id: like.id), 'Лайк не был удален из базы данных'
-    
+    assert_nil @post_for_destroy.likes.find_by(id: like.id), 'Like was not deleted from the database'
+
     assert_redirected_to posts_url
     assert_equal I18n.t('likes.destroy.success'), flash[:notice]
   end

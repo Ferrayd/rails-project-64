@@ -44,6 +44,8 @@ ru:
               blank: не может быть пустым
             title:
               blank: не может быть пустым
+            category:
+              blank: "Пожалуйста, выберите категорию"
         post_comment:
           attributes:
             content:

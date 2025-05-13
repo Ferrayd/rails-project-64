@@ -2,7 +2,7 @@
 ru:
   posts:
     create:
-      failure: Ошибка!
+      failure: "Не удалось создать пост: %{errors}"
     edit:
       back: Назад
       show: Показать

@@ -44,6 +44,8 @@ en:
               blank: can't be blank
             title:
               blank: can't be blank
+            category:
+              blank: "Select category"
         post_comment:
           attributes:
             content:

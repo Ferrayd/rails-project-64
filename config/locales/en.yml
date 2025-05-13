@@ -4,6 +4,12 @@ en:
   comments:
     create:
       failure: Comment can't be blank!
+    form:
+      reply_placeholder: "Reply to comment"
+      comment_placeholder: "Leave a comment"
+      reply_button: "Reply"
+      comment_button: "Comment"
+    created: "Сomment added"
   errors:
     messages:
       not_saved: The resource could not be saved.

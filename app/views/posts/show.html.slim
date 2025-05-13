@@ -5,23 +5,17 @@
   .card-body
     h1 = @post.title
     p.lead = @post.body
-
     hr
-
     p
       strong = t('posts.show.category')
       = @post.category.name
-
     p
       strong = t('posts.show.author')
       = @post.creator.email
-      == render partial: 'likes/like', locals: { post: @post }
+      = render partial: 'likes/like', locals: { post: @post, user_like: @user_like }
     hr
-
     h3 = t('posts.show.comments')
-    = render partial: 'comments/list', locals: { post: @post }
     - if user_signed_in?
-      h3 = t('posts.show.add_comment')
-      = render partial: 'comments/form', locals: { post: @post }
-
+      = render partial: 'comments/form', locals: { post: @post, parent: nil, comment: @comment }
+    = render partial: 'comments/list', locals: { post: @post }
     = link_to t('posts.show.back_to_posts'), posts_path, class: 'btn btn-secondary'

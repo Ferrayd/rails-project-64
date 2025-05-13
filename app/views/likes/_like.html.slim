@@ -1,13 +1,10 @@
 div
-  span.me-2
+  span.me-2.d-flex
     = post.likes.count
-
-  span
-    - if post.likes.exists?(user: current_user)
-      = form_with url: post_like_path(post, post.likes.find_by(user: current_user)), method: :delete, local: true do
-        = button_tag '', type: 'submit',
-        class: 'bi bi-hand-thumbs-up-fill border-0 bg-transparent', title: t('posts.index.like')
-    - else
-      = form_with url: post_likes_path(post), method: :post, local: true do
-        = button_tag '', type: 'submit', class: 'bi bi-hand-thumbs-up border-0 bg-transparent',
-        title: t('posts.index.unlike')
+    - if user_signed_in?
+      - if @user_like
+        = link_to post_like_path(post, user_like), data: { turbo_method: :delete } do
+          i.bi.bi-heart-fill.h5.ms-2.text-danger
+      - else
+        = link_to post_likes_path(post), data: { turbo_method: :post } do
+          i.bi.bi-heart.h5.ms-2.text-danger
