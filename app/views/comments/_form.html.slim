@@ -1,4 +1,3 @@
-- return if comment.nil?
 = form_for comment, url: post_comments_path(post) do |f|
   = f.hidden_field :parent_id, value: parent&.id
   .mb-2

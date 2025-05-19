@@ -4,8 +4,7 @@
     small.text-muted = comment.user.email
 
     - if user_signed_in?
-      - reply_comment = @form_comment.dup
-      - reply_comment.parent = comment
+      - reply_comment = PostComment.new(parent: comment)
       = render partial: 'comments/form', locals: { post: post, parent: comment, comment: reply_comment }
 
   - if children.present?
