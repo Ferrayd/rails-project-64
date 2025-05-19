@@ -1,13 +1,7 @@
 ---
 ru:
   posts:
-    create:
-      failure: "Не удалось создать пост: %{errors}"
-    edit:
-      back: Назад
-      show: Показать
     index:
-      like: Лайкнуть
       show: Показать
       table_headers:
         author: Автор
@@ -17,16 +11,11 @@ ru:
         time: Время создания
         title: Заголовок
       title: Список постов
-      unlike: Убрать лайк
     new:
       title: Новый пост
     show:
-      add_comment: Добавить комментарий
       author: 'Автор:'
       back_to_posts: Назад к постам
       category: 'Категория:'
       comments: Комментарии
-      confirm_delete: Вы уверены?
-      destroy: Удалить
-      edit: Редактировать
       title: Заголовок

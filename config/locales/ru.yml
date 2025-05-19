@@ -3,13 +3,11 @@ ru:
   ago: назад
   comments:
     create:
-      failure: Комментарий не может быть пустым!
+      success: Комментарий успешно добавлен
     form:
-      reply_placeholder: "Ответить на комментарий"
-      comment_placeholder: "Оставьте комментарий"
-      reply_button: "Ответить"
-      comment_button: "Комментировать"
-    created: "Комментарий добавлен"
+      comment_button: Комментировать
+      comment_placeholder: Оставьте комментарий
+      reply_button: Ответить
   errors:
     messages:
       not_saved: Неполучается сохранить данные.

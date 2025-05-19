@@ -12,10 +12,15 @@
     p
       strong = t('posts.show.author')
       = @post.creator.email
+    p
+      = @post.likes_count
       = render partial: 'likes/like', locals: { post: @post, user_like: @user_like }
     hr
     h3 = t('posts.show.comments')
     - if user_signed_in?
       = render partial: 'comments/form', locals: { post: @post, parent: nil, comment: @comment }
-    = render partial: 'comments/list', locals: { post: @post }
+
+    - @comments.each do |comment, children|
+      = render partial: 'comments/comment', locals: { comment: comment, post: @post, children: children }
+
     = link_to t('posts.show.back_to_posts'), posts_path, class: 'btn btn-secondary'

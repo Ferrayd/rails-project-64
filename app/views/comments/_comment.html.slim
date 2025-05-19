@@ -2,9 +2,13 @@
   .card-body
     p = comment.content
     small.text-muted = comment.user.email
+
     - if user_signed_in?
-      = render partial: 'comments/form', locals: { post: post, parent: comment,
-      comment: PostComment.new(post: post, user: current_user, parent: comment) }
-    - comment.children.each do |nested_comment|
-      .ms-4.mt-2
-        = render partial: 'comments/comment', locals: { comment: nested_comment, post: post }
+      - reply_comment = @form_comment.dup
+      - reply_comment.parent = comment
+      = render partial: 'comments/form', locals: { post: post, parent: comment, comment: reply_comment }
+
+  - if children.present?
+    .ms-4.mt-2
+      - children.each do |child, grand_children|
+        = render partial: 'comments/comment', locals: { comment: child, post: post, children: grand_children }

@@ -1,13 +1,7 @@
 ---
 en:
   posts:
-    create:
-      failure: "%{errors}"
-    edit:
-      back: Back
-      show: Show
     index:
-      like: like
       show: Show
       table_headers:
         author: Author
@@ -17,16 +11,11 @@ en:
         time: Created at
         title: Title
       title: Posts list
-      unlike: unlike
     new:
       title: New post
     show:
-      add_comment: Add comment
       author: 'Author:'
       back_to_posts: Back to posts
       category: 'Category:'
       comments: Comments
-      confirm_delete: Are you sure?
-      destroy: Delete
-      edit: Edit
       title: Title

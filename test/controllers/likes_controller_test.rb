@@ -10,9 +10,6 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     @post_for_create = posts(:two)
     @post_for_destroy = posts(:one)
     sign_in @user
-
-    @post_for_create.likes.where(user: @user).destroy_all
-    @post_for_destroy.likes.where(user: @user).destroy_all
   end
 
   test 'should create like' do
@@ -28,7 +25,8 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy like' do
-    like = @post_for_destroy.likes.find_or_create_by(user: @user)
+    like = @post_for_destroy.likes.find_by(user: @user)
+    assert_not_nil like, 'Expected like to exist before destroy'
 
     assert_difference('@post_for_destroy.likes.count', -1) do
       delete post_like_path(@post_for_destroy, like, locale: I18n.default_locale)

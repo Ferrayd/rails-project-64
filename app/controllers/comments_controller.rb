@@ -9,7 +9,10 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @post, notice: t('.success')
     else
-      handle_failed_save
+      @comments = @post.comments.includes(:user).arrange
+      @form_comment = @comment
+      flash.alert = t('.failure')
+      render 'posts/show', status: :unprocessable_entity
     end
   end
 
@@ -17,12 +20,6 @@ class CommentsController < ApplicationController
 
   def build_comment
     @post.comments.build(comment_params.merge(user: current_user))
-  end
-
-  def handle_failed_save
-    @comments = @post.comments.includes(:user).arrange
-    flash.alert = t('.failure', errors: @comment.errors.full_messages.join(', '))
-    render 'posts/show', status: :unprocessable_entity
   end
 
   def comment_params

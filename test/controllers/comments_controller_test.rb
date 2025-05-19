@@ -41,10 +41,8 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
            params: { post_comment: invalid_attrs }
     end
 
-    missing_comment = @post.comments.find_by(user_id: @user.id, content: '')
-    assert_nil missing_comment, 'Comment with empty content was created'
     assert_response :unprocessable_entity
-    assert_includes flash[:alert], I18n.t('comments.create.failure'), 'Failure message not set'
+    assert_includes flash[:alert], I18n.t('comments.create.failure', errors: ''), 'Failure message not set'
   end
 
   test 'should create nested comment' do

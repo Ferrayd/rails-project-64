@@ -4,13 +4,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.includes(:creator).order(created_at: :desc)
+    @posts = Post.order(created_at: :desc)
   end
 
   def show
-    @post = Post.includes(:creator, :comments).find(params[:id])
+    @post = Post.find(params[:id])
     @user_like = current_user ? @post.likes.find_by(user: current_user) : nil
-    @comment = PostComment.new(post: @post, user: current_user) if user_signed_in?
+    @form_comment = PostComment.new(post: @post, user: current_user) if user_signed_in?
     @comments = @post.comments.includes(:user).arrange
   end
 
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   end
 
   def handle_create_failure
-    flash.alert = t('.failure', errors: @post.errors.full_messages.join(', '))
+    flash.alert = t('.failure')
     render :new, status: :unprocessable_entity
   end
 end

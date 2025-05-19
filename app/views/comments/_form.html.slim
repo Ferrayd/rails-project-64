@@ -1,7 +1,8 @@
+- return if comment.nil?
 = form_for comment, url: post_comments_path(post) do |f|
-  - if parent && !comment.parent
-    = f.hidden_field :parent_id, value: parent.id
+  = f.hidden_field :parent_id, value: parent&.id
   .mb-2
     = f.text_area :content, class: 'form-control', placeholder: t('comments.form.comment_placeholder')
-  = f.submit t("comments.form.#{parent ? 'reply' : 'comment'}_button"), class: 'btn btn-primary btn-sm'
+  - button_type = comment.parent_id? ? 'reply' : 'comment'
+  = f.submit t("comments.form.#{button_type}_button"), class: 'btn btn-primary btn-sm'
   hr

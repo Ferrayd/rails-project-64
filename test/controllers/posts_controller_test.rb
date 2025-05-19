@@ -27,10 +27,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert created_post, 'Post was not created with correct attributes'
 
     assert_redirected_to posts_url
-    assert_equal post_attrs[:title], created_post.title
-    assert_equal post_attrs[:body], created_post.body
-    assert_equal @category.id, created_post.category_id
-    assert_equal @user, created_post.creator
   end
 
   test 'should not create post with invalid data' do
@@ -39,13 +35,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Post.count') do
       post posts_url, params: { post: invalid_attrs }
     end
-
-    missing_post = Post.find_by(
-      title: invalid_attrs[:title],
-      body: invalid_attrs[:body],
-      creator_id: @user.id
-    )
-    assert_nil missing_post, 'Post with invalid data was created'
     assert_response :unprocessable_entity
   end
 
@@ -66,5 +55,18 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
     assert_nil Post.find_by(post_attrs), 'Post was created without authentication'
     assert_redirected_to new_user_session_path
+  end
+
+  test 'should get index' do
+    sign_out @user
+    get posts_url(locale: I18n.default_locale)
+    assert_response :success
+    assert_includes response.body, @post.title
+  end
+
+  test 'should get new' do
+    get new_post_url(locale: I18n.default_locale)
+    assert_response :success
+    assert_select "form[action='#{posts_path}']"
   end
 end

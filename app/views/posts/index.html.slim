@@ -18,9 +18,9 @@ table.table.table-striped.table-hover.mb-5
         th{scope='row'} = i + 1
         td = link_to post.title, post_path(post), class: 'text-decoration-none d-block w-100 text-dark'
         td = post.creator.email
-        td = post.comments.count
+        td = post.comments_count
         td = "#{time_ago_in_words(post.created_at)} #{t('ago')}"
-        td = post.likes.count
+        td = post.likes_count
         td.d-flex
           .me-4 = link_to t('posts.index.show'), post_path(post)
         td

@@ -3,13 +3,11 @@ en:
   ago: ago
   comments:
     create:
-      failure: Comment can't be blank!
+      success: Сreate successfull.
     form:
-      reply_placeholder: "Reply to comment"
-      comment_placeholder: "Leave a comment"
-      reply_button: "Reply"
-      comment_button: "Comment"
-    created: "Сomment added"
+      comment_button: Comment
+      comment_placeholder: Leave a comment
+      reply_button: Reply
   errors:
     messages:
       not_saved: The resource could not be saved.

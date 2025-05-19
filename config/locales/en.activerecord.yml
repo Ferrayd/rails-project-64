@@ -42,10 +42,10 @@ en:
           attributes:
             body:
               blank: can't be blank
+            category:
+              blank: Select category
             title:
               blank: can't be blank
-            category:
-              blank: "Select category"
         post_comment:
           attributes:
             content:
@@ -72,15 +72,9 @@ en:
         other: Users
   comments:
     create:
-      success: create successfull.
-    handle_create_failure:
       failure: 'Create error: %{errors}'
   posts:
     create:
       success: Post created successfully.
-    destroy:
-      success: Post deleted.
     handle_create_failure:
       failure: 'Create error: %{errors}'
-    update:
-      failure: 'Update error: %{errors}'
