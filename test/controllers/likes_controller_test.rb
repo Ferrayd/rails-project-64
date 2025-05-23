@@ -9,6 +9,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @post_for_create = posts(:two)
     @post_for_destroy = posts(:one)
+    @like = post_likes(:one)
     sign_in @user
   end
 
@@ -25,14 +26,13 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy like' do
-    like = @post_for_destroy.likes.find_by(user: @user)
-    assert_not_nil like, 'Expected like to exist before destroy'
+    assert_not_nil @like, 'Expected like to exist before destroy'
 
     assert_difference('@post_for_destroy.likes.count', -1) do
-      delete post_like_path(@post_for_destroy, like, locale: I18n.default_locale)
+      delete post_like_path(@post_for_destroy, @like, locale: I18n.default_locale)
     end
 
-    assert_nil @post_for_destroy.likes.find_by(id: like.id), 'Like was not deleted from the database'
+    assert_nil PostLike.find_by(id: @like.id), 'Like was not deleted from the database'
 
     assert_redirected_to posts_url
     assert_equal I18n.t('likes.destroy.success'), flash[:notice]

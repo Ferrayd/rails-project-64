@@ -1,6 +1,8 @@
 ---
 en:
   posts:
+    create:
+      failure: 'Create error: %{errors}'
     index:
       show: Show
       table_headers:

@@ -41,7 +41,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
            params: { post_comment: invalid_attrs }
     end
 
-    assert_response :unprocessable_entity
+    assert_redirected_to @post
     assert_includes flash[:alert], I18n.t('comments.create.failure', errors: ''), 'Failure message not set'
   end
 

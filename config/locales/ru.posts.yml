@@ -1,6 +1,8 @@
 ---
 ru:
   posts:
+    create:
+      failure: 'Ошибка создания: %{errors}'
     index:
       show: Показать
       table_headers:

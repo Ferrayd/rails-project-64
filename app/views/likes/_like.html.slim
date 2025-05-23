@@ -1,11 +1,11 @@
-- if user_like
-  - if user_signed_in?
+- if user_signed_in?
+  - if user_like
     = link_to post_like_path(post, user_like), data: { turbo_method: :delete } do
       i.bi.bi-heart-fill.h5.ms-2.text-danger
   - else
-    i.bi.bi-heart-fill.h5.ms-2.text-danger.text-secondary
-- elsif user_signed_in?
-  = link_to post_likes_path(post), data: { turbo_method: :post } do
-    i.bi.bi-heart.h5.ms-2.text-danger
+    = link_to post_likes_path(post), data: { turbo_method: :post } do
+      i.bi.bi-heart.h5.ms-2.text-danger
+- elsif user_like
+  i.bi.bi-heart-fill.h5.ms-2.text-danger.text-secondary
 - else
   i.bi.bi-heart.h5.ms-2.text-danger.text-secondary

@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.includes(:creator).order(created_at: :desc)
   end
 
   def show
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   end
 
   def handle_create_failure
-    flash.alert = t('.failure')
+    flash.alert = t('.failure', errors: @post.errors.full_messages.to_sentence)
     render :new, status: :unprocessable_entity
   end
 end

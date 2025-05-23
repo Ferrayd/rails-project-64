@@ -9,10 +9,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @post, notice: t('.success')
     else
-      @comments = @post.comments.includes(:user).arrange
-      @form_comment = @comment
-      flash.alert = t('.failure')
-      render 'posts/show', status: :unprocessable_entity
+      flash[:alert] = t('.failure', errors: @comment.errors.full_messages.to_sentence)
+      redirect_to @post
     end
   end
 
