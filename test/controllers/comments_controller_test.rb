@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# test/controllers/comments_controller_test.rb
 require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
