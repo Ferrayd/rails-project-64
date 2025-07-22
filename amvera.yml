@@ -1,13 +1,17 @@
+---
+version: null
 meta:
-  environment: ruby
+  environment: docker
   toolchain:
-    name: bundle
-    version: 3.2.2
+    name: docker
+    version: latest
 build:
-  image: null
+  dockerfile: Dockerfile
+  skip: true
 run:
   image: null
-  mainScript: /bin/render-build.sh
+  command: null
+  args: null
   persistenceMount: /data
-  containerPort: "80"
-  servicePort: "80"
+  containerPort: 3000
+  servicePort: 80
